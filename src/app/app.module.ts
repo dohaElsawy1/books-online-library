@@ -10,6 +10,7 @@ import { FooterComponent } from './components/footer/footer/footer.component';
 import { HomeComponent } from './components/home/home/home.component';
 import { BooksComponent } from './components/books/books/books.component';
 import { FormsModule } from '@angular/forms';
+import { BookDetailsComponent } from './components/bookDetails/book-details/book-details.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     HomeComponent,
     BooksComponent,
+    BookDetailsComponent,
  
   ],
   imports: [

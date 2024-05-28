@@ -1,9 +1,12 @@
 <div class="book-grid">
     <div class="book-item" *ngFor="let b of books">
-      <img [src]="b.cover_id ? 'https://covers.openlibrary.org/b/id/' + b.cover_id + '-M.jpg' : defaultCover" alt="Book Cover">
-      <h3>{{ b.title }}</h3>
+      <a [routerLink]="['/book', b.cover_id]">
+        <img [src]="b.cover_id ? 'https://covers.openlibrary.org/b/id/' + b.cover_id + '-M.jpg' : defaultCover"  alt="Book Cover">
+      </a>
+      <h3> <a [routerLink]="['/book', b.cover_id]"> {{ b.title }} </a></h3>
       <p>Published: {{ b.first_publish_year }}</p>
       <p>Authors: {{ b.authorNames }}</p>
+      <button (click)="viewDetails(b.cover_id)">More</button>
      </div>
   </div>
   

@@ -13,5 +13,8 @@ export class BookService {
   getBooks(): Observable<any> {
     return this.http.get<any>(this.API_URL);
   }
+  getBookDetails(bookId: string): Observable<any> {
+    return this.http.get<any>(`${this.API_URL}/works/${bookId}.json`);
+  }
 
 }

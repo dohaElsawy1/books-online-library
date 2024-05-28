@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Author, IBooks } from 'src/app/models/ibooks';
 import { BookService } from 'src/app/services/books/book.service';
 
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit{
   books: any[] = [];
   defaultCover = 'assets/default-cover.png';
 
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService, private router: Router) { }
 
   ngOnInit(): void {
     this.bookService.getBooks().subscribe((data: any) => {
@@ -22,5 +23,7 @@ export class HomeComponent implements OnInit{
       }));
     });
   }
-
+  viewDetails(bookId: number): void {
+    this.router.navigate(['/book', bookId]);
+  }
 }
