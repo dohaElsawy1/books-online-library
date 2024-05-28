@@ -1,1 +1,9 @@
-<p>home works!</p>
+<div class="book-grid">
+    <div class="book-item" *ngFor="let b of books">
+      <img [src]="b.cover_id ? 'https://covers.openlibrary.org/b/id/' + b.cover_id + '-M.jpg' : defaultCover" alt="Book Cover">
+      <h3>{{ b.title }}</h3>
+      <p>Published: {{ b.first_publish_year }}</p>
+      <p>Authors: {{ b.authorNames }}</p>
+     </div>
+  </div>
+  
