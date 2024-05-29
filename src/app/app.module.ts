@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home/home.component';
 import { BooksComponent } from './components/books/books/books.component';
 import { FormsModule } from '@angular/forms';
 import { BookDetailsComponent } from './components/bookDetails/book-details/book-details.component';
+import { AuthordetailsComponent } from './components/authordetails/authordetails/authordetails.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { BookDetailsComponent } from './components/bookDetails/book-details/book
     HomeComponent,
     BooksComponent,
     BookDetailsComponent,
+    AuthordetailsComponent,
  
   ],
   imports: [
