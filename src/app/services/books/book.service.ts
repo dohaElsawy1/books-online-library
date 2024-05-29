@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { IBookDetails } from 'src/app/models/ibookdetails';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class BookService {
   }
   getBookDetails(bookId: string): Observable<any> {
     // const prefixedBookId = `OL${bookId}W`;
-    return this.http.get<any>(`${this.url}/works/${bookId}.json`);
+    return this.http.get<IBookDetails>(`${this.url}/works/${bookId}.json`);
     // return this.http.get<any>(`${this.API_URL}/works/${workId}.json`);
 
   }

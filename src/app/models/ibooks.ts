@@ -7,4 +7,5 @@ export interface IBooks {
 }
 export interface Author {
     name: string;
+    key: string;
 }

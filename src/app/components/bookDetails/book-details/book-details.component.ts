@@ -17,11 +17,12 @@ export class BookDetailsComponent {
 
   ngOnInit(): void {
     const bookId = this.route.snapshot.paramMap.get('id'); // bookId
-    const prefixedBookId = `OL${bookId}W`;
+    // console.log(bookId); //debug
+    // const prefixedBookId = `OL${bookId}W`;
     // console.log('work ID from route: ', workId); // debug
-    console.log('book id:', prefixedBookId); // debug
-    if (prefixedBookId) { // bookId
-      this.bookService.getBookDetails(prefixedBookId).subscribe( // bookId
+    console.log('book id:', bookId); // debug
+    if (bookId) { // bookId
+      this.bookService.getBookDetails(bookId).subscribe( // bookId
         (data: IBookDetails) => {
           console.log('Book Details:', data); // debug 
           this.book = data;

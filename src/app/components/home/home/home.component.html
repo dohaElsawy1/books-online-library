@@ -1,12 +1,18 @@
 <div class="book-grid">
     <div class="book-item" *ngFor="let b of books">
-      <a [routerLink]="['/book', b.cover_id]">
+      <a [routerLink]="['/book', b.key.split('/').pop()]">
         <img [src]="b.cover_id ? 'https://covers.openlibrary.org/b/id/' + b.cover_id + '-M.jpg' : defaultCover"  alt="Book Cover">
       </a>
-      <h3> <a [routerLink]="['/book', b.cover_id]"> {{ b.title }} </a></h3>
-      <p>Published: {{ b.first_publish_year }}</p>
-      <p>Authors: {{ b.authorNames }}</p>
-      <button (click)="viewDetails(b.cover_id)">More</button>
+      <h3> <a [routerLink]="['/book', b.key.split('/').pop()]"> {{ b.title }} </a></h3>
+      <p>Authors:
+        <ng-container *ngFor="let author of b.authors; let isLast=last">
+          <a [routerLink]="['/authors', author.key.split('/').pop()]">{{ author.name }}</a>
+          <!-- <a [routerLink]="['/search/authors', encodeURIComponent(author.key)]">{{ author.name }}</a> -->
+
+          <!-- <span *ngIf="!isLast">, </span> -->
+        </ng-container>
+      </p>
+      <button (click)="viewDetails(b.key.split('/').pop())">More</button>
      </div>
   </div>
   
