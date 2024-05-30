@@ -1,11 +1,11 @@
-<p>authordetails works!</p>
+<!-- <p>authordetails works!</p> -->
 <div *ngIf="author">
   <img *ngIf="author.photos" [src]="author.photos" alt="Author Photo" />
   <h2>{{ author.name }}</h2>
-  <p>Birth Date: {{ author.birth_date }}</p>
-  <p>Work Count: {{ author.work_count }}</p>
+  <p>Birth Year: {{ author.birth_date ? author.birth_date : 'none' }}</p>
+  <p>Work Count: {{ workCount }}</p>
   <p>Top 5 Subjects:</p>
   <ul>
-    <li *ngFor="let subject of author.top_subjects">{{ subject }}</li>
+    <li *ngFor="let subject of topFiveSubjects">{{ subject }}</li>
   </ul>
 </div>

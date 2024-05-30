@@ -10,8 +10,9 @@ import { AuthordetailsComponent } from './components/authordetails/authordetails
 const routes: Routes = [
   { path: 'home', component:HomeComponent },
   { path: 'book/:id', component: BookDetailsComponent }, 
-  // { path: '**', redirectTo: 'home' }, 
-  { path: 'authors/:id', component: AuthordetailsComponent }
+  { path: '', component: HomeComponent}, 
+  { path: 'authors/:id', component: AuthordetailsComponent },
+  // { path: '**', redirectTo: '', pathMatch: 'full' } // Wildcard route for a 404 page, redirecting to home 
   // { path: 'favorite', component: FavoritesComponent } 
 ];
 
