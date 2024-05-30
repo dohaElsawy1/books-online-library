@@ -1,20 +1,4 @@
-<!-- <div *ngIf="book">
-  <h2>{{ book.title }}</h2>
-  <p>First Published Year: {{ book.first_publish_year }}</p>
-  <p>Authors: {{ authorNames }}</p>
-  <p>Editions Count: {{ book.edition_count }}</p>
-  <p>No. of Pages: {{ book.number_of_pages }}</p>
-  <img
-    *ngIf="book.cover_id"
-    [src]="'https://covers.openlibrary.org/b/id/' + book.cover_id + '-L.jpg'"
-    alt="Book Cover"
-  />
-  <img
-    *ngIf="!book.cover_id"
-    src="assets/default-cover.png"
-    alt="Default Book Cover"
-  />
-</div> -->
+
 <div *ngIf="book; else loading">
   <h2>{{ book.title }}</h2>
   <div class="book-details">

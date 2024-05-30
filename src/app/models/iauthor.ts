@@ -3,6 +3,6 @@ export interface Author {
     name: string;
     birth_date: string;
     top_subjects: string[];
-    photos?: number[]; // Assuming photo is optional
+    photos?: number[]; // 
     work_count: number;
 }

@@ -15,9 +15,9 @@ export class AuthorService {
 
   getAuthorDetails(authorKey: string): Observable<Author> {
     // return this.http.get<Author>(`${this.url}/authors/${authorKey}.json`);
-    // console.log('Fetching author details for key:', authorKey); // Debugging line
+    // console.log('Fetching author details for key:', authorKey); // debug
     return this.http.get<Author>(`${this.url}/authors/${authorKey}.json`).pipe(
-      // tap(author => console.log('Author details response:', author)), // Debugging line
+      // tap(author => console.log('Author details response:', author)), // debug
       catchError(error => {
         console.error('Error fetching author details:', error);
         throw error;
@@ -31,14 +31,14 @@ export class AuthorService {
   
   getAuthorWorksCount(authorKey: string): Observable<number> {
 
-    const initialUrl = `${this.url}/authors/${authorKey}/works.json?limit=1000`; // Fetch all works
+    const initialUrl = `${this.url}/authors/${authorKey}/works.json?limit=1000`; 
 
     return this.http.get<any>(initialUrl).pipe(
-    // tap(response => console.log('Initial works response:', response)), // Debugging line
-    map(response => response ? response.size : 0), // Extract size from initial response
+    // tap(response => console.log('Initial works response:', response)), // debug
+    map(response => response ? response.size : 0), 
     tap({
-      // next: totalCount => console.log('Total works count:', totalCount), // Debug total count
-      // complete: () => console.log('Total works count logging completed') // Debug completion
+      // next: totalCount => console.log('Total works count:', totalCount), // debug
+      // complete: () => console.log('Total works count logging completed') // debug
     }),
     catchError(error => {
       console.error('Error fetching author works:', error);
@@ -48,7 +48,7 @@ export class AuthorService {
   }
   getAuthorSubjects(authorName: string): Observable<string[]> {
     const apiUrl = `${this.url}/search/authors.json?q=${encodeURIComponent(authorName)}`;
-    console.log('Author subjects API URL:', apiUrl); // Log the constructed URL
+    console.log('Author subjects API URL:', apiUrl); // debug
 
     return this.http.get<any>(apiUrl).pipe(
       map(response => {

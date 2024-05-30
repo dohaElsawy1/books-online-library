@@ -12,8 +12,7 @@ const routes: Routes = [
   { path: 'book/:id', component: BookDetailsComponent }, 
   { path: '', component: HomeComponent}, 
   { path: 'authors/:id', component: AuthordetailsComponent },
-  // { path: '**', redirectTo: '', pathMatch: 'full' } // Wildcard route for a 404 page, redirecting to home 
-  // { path: 'favorite', component: FavoritesComponent } 
+  { path: 'favorites', component: FavoritesComponent },
 ];
 
 @NgModule({
