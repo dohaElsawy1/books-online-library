@@ -1,4 +1,4 @@
-<div *ngIf="book">
+<!-- <div *ngIf="book">
   <h2>{{ book.title }}</h2>
   <p>First Published Year: {{ book.first_publish_year }}</p>
   <p>Authors: {{ authorNames }}</p>
@@ -14,7 +14,25 @@
     src="assets/default-cover.png"
     alt="Default Book Cover"
   />
+</div> -->
+<div *ngIf="book; else loading">
+  <h2>{{ book.title }}</h2>
+  <div class="book-details">
+    <img [src]="book.cover_id ? 'https://covers.openlibrary.org/b/id/' + book.cover_id + '-M.jpg' : defaultCover"  alt="Book Cover">
+    <ng-template #noCover>
+      <img src="assets/default-cover.png" alt="No cover available">
+    </ng-template>
+    <div class="book-info">
+      <p><strong>First published:</strong> {{ book.first_publish_year }}</p>
+      <p><strong>Authors:</strong> {{ authorNames }}</p>
+      <p><strong>Number of pages:</strong> {{ book.number_of_pages }}</p>
+    </div>
+  </div>
 </div>
+<ng-template #loading>
+  <p>Loading book details...</p>
+</ng-template>
+
 
 <div *ngIf="!book">
   <p>Loading book details...</p>

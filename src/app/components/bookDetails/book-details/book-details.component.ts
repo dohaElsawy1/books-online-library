@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from 'src/app/services/books/book.service';
 import { IBookDetails } from 'src/app/models/ibookdetails';
+import { Author } from 'src/app/models/ibooks';
 
 
 @Component({
@@ -12,8 +13,10 @@ import { IBookDetails } from 'src/app/models/ibookdetails';
 export class BookDetailsComponent {
   book: IBookDetails | undefined;
   authorNames: string = '';
+  defaultCover = 'assets/default-cover.png';
 
   constructor(private route: ActivatedRoute, private bookService: BookService) { }
+
 
   ngOnInit(): void {
     const bookId = this.route.snapshot.paramMap.get('id'); // bookId
@@ -37,5 +40,5 @@ export class BookDetailsComponent {
   getAuthorNames(): string {
     return this.book?.authors?.map(author => author.name).join(', ') ||  'unknown';
   }
-  
+ 
 }

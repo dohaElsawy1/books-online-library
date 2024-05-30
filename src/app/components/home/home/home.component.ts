@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit{
   }
   viewDetails(bookId: number): void {
     // this.router.navigate(['/book', bookId]); 
-    this.router.navigate(['/book', bookId]); 
+    // this.router.navigate(['/book', bookId]); 
+    this.router.navigate(['/book', bookId], { queryParams: { bookId: bookId }})
   }
 }
