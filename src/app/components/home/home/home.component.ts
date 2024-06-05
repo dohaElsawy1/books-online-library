@@ -23,7 +23,8 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void {
   this.getBooks();
   }
-getBooks(): void{
+
+  getBooks(): void{
   this.bookService.getBooks().subscribe((data: any) => {
     // this.books = data.works.slice(0,9);
     this.books = data.works.slice(0, 9).map((book: IBooks) => ({
@@ -36,7 +37,9 @@ getBooks(): void{
 
   viewDetails(bookId: number): void {
     // this.router.navigate(['/book', bookId]); 
-    this.router.navigate(['/book', bookId], { queryParams: { bookId: bookId }})
+    // this.router.navigate(['/book', bookId], { queryParams: { bookId: bookId }})
+    this.router.navigate(['/book', bookId]);
+
   }
 
 

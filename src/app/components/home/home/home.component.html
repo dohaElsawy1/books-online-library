@@ -7,7 +7,7 @@
     <option value="author">Author Name</option>
     <option value="subject">Subject</option>
   </select>
-  <button (click)="searchBooks()">Search</button>
+  <button (click)="searchBooks()" button type="button" class="btn btn-secondary">Search</button>
 </div>
 
 <div class="book-grid" *ngIf="!isSearch">
@@ -33,7 +33,7 @@
         }}</a>
       </ng-container>
     </p>
-    <button (click)="viewDetails(b.key.split('/').pop())">More</button>
+    <button (click)="viewDetails(b.key.split('/').pop())" button type="button" class="btn btn-secondary">More</button>
   </div>
 </div>
 
@@ -51,3 +51,4 @@
     </div>
   </div>
 </div>
+

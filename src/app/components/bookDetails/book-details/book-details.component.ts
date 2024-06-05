@@ -11,34 +11,59 @@ import { Author } from 'src/app/models/ibooks';
   styleUrls: ['./book-details.component.css']
 })
 export class BookDetailsComponent {
-  book: IBookDetails | undefined;
-  authorNames: string = '';
+  // book: IBookDetails | undefined;
+  // authorNames: string = '';
   defaultCover = 'assets/default-cover.png';
+  book: any;
 
   constructor(private route: ActivatedRoute, private bookService: BookService) { }
 
 
   ngOnInit(): void {
-    const bookId = this.route.snapshot.paramMap.get('id'); // bookId
-    // console.log(bookId); //debug
-    // const prefixedBookId = `OL${bookId}W`;
-    // console.log('work ID from route: ', workId); // debug
-    console.log('book id:', bookId); // debug
-    if (bookId) { // bookId
-      this.bookService.getBookDetails(bookId).subscribe( // bookId
-        (data: IBookDetails) => {
-          console.log('Book Details:', data); // debug 
-          this.book = data;
-          this.authorNames = this.book.authors?.map(author => author.name).join(', ') || 'Unknown';
+  //   const bookId = this.route.snapshot.paramMap.get('id'); // bookId
+  //   // console.log(bookId); //debug
+  //   // const prefixedBookId = `OL${bookId}W`;
+  //   // console.log('work ID from route: ', workId); // debug
+  //   console.log('book id:', bookId); // debug
+  //   if (bookId) { // bookId
+  //     this.bookService.getBookDetails(bookId).subscribe( // bookId
+  //       (data: IBookDetails) => {
+  //         console.log('Book Details:', data); // debug 
+  //         this.book = data;
+  //         this.authorNames = this.book.authors?.map(author => author.name).join(', ') || 'Unknown';
+  //       },
+  //       error => {
+  //         console.error('Error fetching book details:', error); 
+  //       }
+  //     );
+  //   }
+  // }
+  // getAuthorNames(): string {
+  //   return this.book?.authors?.map(author => author.name).join(', ') ||  'unknown';
+  // }
+  const bookId = this.route.snapshot.paramMap.get('id');
+  console.log('book id:',bookId); // debug
+    if (bookId) {
+      this.bookService.getBookDetails(bookId).subscribe({
+        next: (book: any) => {
+          console.log('book: ',book);
+          this.book = book;
         },
-        error => {
-          console.error('Error fetching book details:', error); 
+        error: (error: any) => {
+          console.error('Error fetching book details:', error);
         }
-      );
+      });
     }
   }
-  getAuthorNames(): string {
-    return this.book?.authors?.map(author => author.name).join(', ') ||  'unknown';
+  getFirstPublishYear(book: any): number | string {
+    if (book.first_publish_year) {
+      return book.first_publish_year;
+    }
+    if (book.created) {
+      return new Date(book.created.value).getFullYear();
+    }
+    return 'Unknown';
   }
- 
+
+
 }
