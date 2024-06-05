@@ -1,3 +1,16 @@
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+  
+.search-container input,
+.search-container select {
+    margin-right: 10px;
+}
+
+
 .book-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -5,13 +18,13 @@
     margin: 16px;
 }
   
-.book-item {
+.book-item, .book-card {
     border: 1px solid #ddd;
     padding: 16px;
     text-align: center;
 }
   
-.book-item img {
+.book-item img, .book-card img {
     max-width: 100%;
     height: auto;
     max-height: 300px; 

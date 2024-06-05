@@ -1,18 +1,53 @@
-<div class="book-grid">
-    <div class="book-item" *ngFor="let b of books">
-      <a [routerLink]="['/book', b.key.split('/').pop()]">
-        <img [src]="b.cover_id ? 'https://covers.openlibrary.org/b/id/' + b.cover_id + '-M.jpg' : defaultCover"  alt="Book Cover">
-      </a>
-      <h3> <a [routerLink]="['/book', b.key.split('/').pop()]"> {{ b.title }} </a></h3>
-      <p>Authors:
-        <ng-container *ngFor="let author of b.authors; let isLast=last">
-          <a [routerLink]="['/authors', author.key.split('/').pop()]">{{ author.name }}</a>
-          <!-- <a [routerLink]="['/search/authors', encodeURIComponent(author.key)]">{{ author.name }}</a> -->
+<!-- <input type="text"   placeholder="Search ....." class="form-control w-50 mx-auto my-4"  [(ngModel)]="searchTerm" (input)="searchBook()"> -->
 
-          <!-- <span *ngIf="!isLast">, </span> -->
-        </ng-container>
-      </p>
-      <button (click)="viewDetails(b.key.split('/').pop())">More</button>
-     </div>
+<div class="search-container">
+  <input type="text" [(ngModel)]="searchQuery" placeholder="Search for books" />
+  <select [(ngModel)]="searchKey">
+    <option value="title">Title</option>
+    <option value="author">Author Name</option>
+    <option value="subject">Subject</option>
+  </select>
+  <button (click)="searchBooks()">Search</button>
+</div>
+
+<div class="book-grid" *ngIf="!isSearch">
+  <div class="book-item" *ngFor="let b of books">
+    <a [routerLink]="['/book', b.key.split('/').pop()]">
+      <img
+        [src]="
+          b.cover_id
+            ? 'https://covers.openlibrary.org/b/id/' + b.cover_id + '-M.jpg'
+            : defaultCover
+        "
+        alt="Book Cover"
+      />
+    </a>
+    <h3>
+      <a [routerLink]="['/book', b.key.split('/').pop()]"> {{ b.title }} </a>
+    </h3>
+    <p>
+      Authors:
+      <ng-container *ngFor="let author of b.authors; let isLast = last">
+        <a [routerLink]="['/authors', author.key.split('/').pop()]">{{
+          author.name
+        }}</a>
+      </ng-container>
+    </p>
+    <button (click)="viewDetails(b.key.split('/').pop())">More</button>
   </div>
-  
+</div>
+
+<div class="search-results" *ngIf="isSearch">
+  <div class="book-grid">
+    <div class="book-card" *ngFor="let book of books">
+      <img
+        *ngIf="book.cover_i"
+        [src]="'https://covers.openlibrary.org/b/id/' + book.cover_i + '-M.jpg'"
+        alt="{{ book.title }}"
+      />
+      <h3>{{ book.title }}</h3>
+      <p>Author: {{ book.author_name?.join(", ") }}</p>
+      <p>First Published: {{ book.first_publish_year }}</p>
+    </div>
+  </div>
+</div>

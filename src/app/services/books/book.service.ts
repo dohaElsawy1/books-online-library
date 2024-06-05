@@ -22,5 +22,11 @@ export class BookService {
     // return this.http.get<any>(`${this.API_URL}/works/${workId}.json`);
 
   }
-
+  // getBookBySearchName(searchValue: string): Observable<any> {
+  //   return this.http.get<any>(`${this.url}/search.json?q=${searchValue}`)
+  // }
+  searchBooks(searchKey: string, searchQuery: string): Observable<any> {
+    const searchUrl = `${this.url}/search.json?${searchKey}=${encodeURIComponent(searchQuery)}`;
+    return this.http.get<any>(searchUrl);
+  }
 }
