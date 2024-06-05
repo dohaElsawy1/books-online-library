@@ -1,39 +1,22 @@
-<!-- 
-<div *ngIf="book; else loading">
-  <h2>{{ book.title }}</h2>
-  <div class="book-details">
-    <img [src]="book.cover_id ? 'https://covers.openlibrary.org/b/id/' + book.cover_id + '-M.jpg' : defaultCover"  alt="Book Cover">
-    <ng-template #noCover>
-      <img src="assets/default-cover.png" alt="No cover available">
-    </ng-template>
-    <div class="book-info">
-      <p><strong>First published:</strong> {{ book.first_publish_year }}</p>
-      <p><strong>Authors:</strong> {{ authorNames }}</p>
-      <p><strong>Number of pages:</strong> {{ book.number_of_pages }}</p>
-    </div>
-  </div>
-</div>
-<ng-template #loading>
-  <p>Loading book details...</p>
-</ng-template> -->
-
 <div *ngIf="book">
   <h1>{{ book.title }}</h1>
-  <img [src]="book.covers && book.covers.length ? 'https://covers.openlibrary.org/b/id/' + book.covers[0] + '-L.jpg' : defaultCover" alt="Book Cover">
- -->
- 
-  <p><strong>Authors: </strong> 
+  <img
+    [src]="
+      book.covers && book.covers.length
+        ? 'https://covers.openlibrary.org/b/id/' + book.covers[0] + '-L.jpg'
+        : defaultCover
+    "
+    alt="Book Cover"
+  />
+
+  <p>
+    <strong> Authors:</strong>
     <ng-container *ngFor="let author of book.authors; let isLast = last">
-      <a [routerLink]="['/authors', author.author.key.split('/').pop()]">{{ author.name }}</a>
-      <span *ngIf="!isLast">, </span>
+      {{ author.name }}
     </ng-container>
   </p>
-
   <p><strong> First Published: </strong>{{ getFirstPublishYear(book) }}</p>
-
-  <!-- Add more book details as needed -->
 </div>
-
 
 <div *ngIf="!book">
   <p>Loading book details...</p>
