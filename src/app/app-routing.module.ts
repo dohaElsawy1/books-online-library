@@ -10,7 +10,7 @@ import { AuthordetailsComponent } from './components/authordetails/authordetails
 const routes: Routes = [
   { path: 'home', component:HomeComponent },
   { path: 'book/:id', component: BookDetailsComponent }, 
-  { path: '', component: HomeComponent}, 
+  { path: '', redirectTo: '/home', pathMatch: 'full'}, 
   { path: 'authors/:id', component: AuthordetailsComponent },
   { path: 'favorites', component: FavoritesComponent },
 ];

@@ -12,6 +12,8 @@ import { BooksComponent } from './components/books/books/books.component';
 import { FormsModule } from '@angular/forms';
 import { BookDetailsComponent } from './components/bookDetails/book-details/book-details.component';
 import { AuthordetailsComponent } from './components/authordetails/authordetails/authordetails.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -24,13 +26,15 @@ import { AuthordetailsComponent } from './components/authordetails/authordetails
     BooksComponent,
     BookDetailsComponent,
     AuthordetailsComponent,
- 
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,    
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

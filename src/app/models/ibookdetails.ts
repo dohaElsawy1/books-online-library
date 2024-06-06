@@ -6,7 +6,8 @@ export interface IBookDetails {
     cover_id: number;
     authors: { author: { key: string } }[];
     first_publish_year: number;
-    number_of_pages: string; 
+    number_of_pages: string;
+    covers: number[]; 
 }
 export interface Author {
     key: string;

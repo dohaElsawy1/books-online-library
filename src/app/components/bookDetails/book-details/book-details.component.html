@@ -16,6 +16,8 @@
     </ng-container>
   </p>
   <p><strong> First Published: </strong>{{ getFirstPublishYear(book) }}</p>
+  <button *ngIf="!isBookInFavorites()" (click)="addToFavorites()" button type="button" class="btn btn-secondary">Add to Wishlist</button>
+  <button *ngIf="isBookInFavorites()" (click)="removeFromFavorites()" button type="button" class="btn btn-secondary">Remove from Wishlist</button>
 </div>
 
 <div *ngIf="!book">

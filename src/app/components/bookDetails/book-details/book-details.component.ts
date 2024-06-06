@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from 'src/app/services/books/book.service';
 import { IBookDetails } from 'src/app/models/ibookdetails';
 import { Author } from 'src/app/models/ibooks';
+import { FavoritesService } from 'src/app/services/favorites/favorites.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -10,13 +12,13 @@ import { Author } from 'src/app/models/ibooks';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.css']
 })
-export class BookDetailsComponent {
+export class BookDetailsComponent implements OnInit {
   // book: IBookDetails | undefined;
   // authorNames: string = '';
   defaultCover = 'assets/default-cover.png';
   book: any;
 
-  constructor(private route: ActivatedRoute, private bookService: BookService) { }
+  constructor(private route: ActivatedRoute, private bookService: BookService, private favoritesService: FavoritesService, private toastr: ToastrService) { }
 
 
   ngOnInit(): void {
@@ -65,5 +67,22 @@ export class BookDetailsComponent {
     return 'Unknown';
   }
 
+  addToFavorites(): void {
+    if (this.book) {
+      this.favoritesService.addToFavorites(this.book);
+      this.toastr.success('Book added to wishlist!');
+    }
+  }
+
+  removeFromFavorites(): void {
+    if (this.book) {
+      this.favoritesService.removeFromFavorites(this.book);
+      this.toastr.success('Book removed from wishlist!');
+    }
+  }
+
+  isBookInFavorites(): boolean {
+    return this.book ? this.favoritesService.isBookInFavorites(this.book) : false;
+  }
 
 }

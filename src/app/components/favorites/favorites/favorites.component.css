@@ -1,0 +1,24 @@
+.wishlist-container {
+    padding: 20px;
+  }
+  
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 16px;
+}
+  
+.book-item {
+    border: 1px solid #ddd;
+    padding: 16px;
+    text-align: center;
+}
+  
+.book-item img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+}
+  

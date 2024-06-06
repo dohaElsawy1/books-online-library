@@ -1,1 +1,32 @@
-<p>favorites works!</p>
+<div class="wishlist-container" >
+  <h2>My Wishlist</h2>
+  <div class="book-grid" >
+    <div class="book-item" *ngFor="let book of wishlist" >
+      <img
+        [src]="
+          book.covers && book.covers.length
+            ? 'https://covers.openlibrary.org/b/id/' + book.covers[0] + '-L.jpg'
+            : defaultCover
+        "
+        alt="Book Cover"
+        
+      />
+      <h3>{{ book.title }}</h3>
+      <!-- <p>
+        Authors:
+        <ng-container *ngFor="let author of book.authors; let isLast = last">
+          <span>{{ author.author.name }}</span
+          ><span *ngIf="!isLast">, </span>
+        </ng-container>
+      </p> -->
+      <button
+        (click)="removeFromFavorites(book)"
+        button
+        type="button"
+        class="btn btn-secondary"
+      >
+        Remove from Wishlist
+      </button>
+    </div>
+  </div>
+</div>
