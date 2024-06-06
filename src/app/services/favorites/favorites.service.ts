@@ -26,7 +26,7 @@ export class FavoritesService {
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.wishlist));
   }
 
-  
+
   getFavorites(): IBookDetails[] {
     return this.wishlist;
   }
@@ -37,17 +37,16 @@ export class FavoritesService {
       this.wishlist.push(book); 
       console.log('Book added:', book);
       console.log('Updated wishlist:', this.wishlist);
-      // this.wishlistSubject.next(this.wishlist); // notify subscribers
+      // this.wishlistSubject.next(this.wishlist); 
     }
-    // this.wishlist.push(book);
-    // this.wishlistSubject.next(this.wishlist);
+    
   }
 
 
 
   removeFromFavorites(book: IBookDetails): void {
     this.wishlist = this.wishlist.filter(b => b.key !== book.key);
-    // this.wishlistSubject.next(this.wishlist); // Notify subscribers
+    // this.wishlistSubject.next(this.wishlist); 
 
   }
 
